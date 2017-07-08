@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
-public class ScenarioManager : JSONFileParser<ScenarioManager>
+public class ScenarioLoader : JSONFileParser<ScenarioLoader>
 {
     public Scenario[] scenarios { get; private set; }
 
