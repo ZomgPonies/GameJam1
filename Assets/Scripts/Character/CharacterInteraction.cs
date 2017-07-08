@@ -1,46 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-// PlayerMouvement script requires thoses components and will be added if they aren't already there
-[RequireComponent(typeof(CharacterController))]
+﻿using UnityEngine;
 
 public class CharacterInteraction : MonoBehaviour
 {
     public bool m_debugRaycast;
-    private CharacterController controller;
 
-    private void Awake()
-    {
-        controller = GetComponent<CharacterController>();
-    }
+    [SerializeField]
+    private LayerMask interactiveObjectLayer;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void Interact()
+    [SerializeField]
+    private float range = 1.0f;
+    private GameObject currentInteractedObjectGameObject;
+    
+    public void Interact(bool selected)
     {
         GameObject camera = CameraManager.Instance.CurrentCamera;
 
-        InteractiveObject myObj = getInteractiveObject(camera.transform.position, camera.transform.forward);
+        GameObject myObj = getObject(camera.transform.position, camera.transform.forward);
 
-        if (myObj == null)
+        if (currentInteractedObjectGameObject != null && currentInteractedObjectGameObject != myObj) currentInteractedObjectGameObject.GetComponent<GlowObject>().StopGlow();
+
+        if (myObj != null)
         {
-            return;
-        }
+            currentInteractedObjectGameObject = myObj;
+            currentInteractedObjectGameObject.GetComponent<GlowObject>().TriggerGlow();
 
-        MissionManager.Instance.m_mission.OnPickupObject(myObj);
+            if (selected) MissionManager.Instance.m_mission.OnPickupObject(myObj.GetComponent<InteractiveObject>());
+        }
     }
 
-    InteractiveObject getInteractiveObject(Vector3 origin, Vector3 direction)
+    /*InteractiveObject getInteractiveObject(Vector3 origin, Vector3 direction)
     {
         GameObject obj = getObject(origin, direction);
         if (obj)
@@ -53,7 +41,7 @@ public class CharacterInteraction : MonoBehaviour
         }
 
         return null;
-    }
+    }*/
 
     GameObject getObject(Vector3 origin, Vector3 direction)
     {
@@ -64,7 +52,7 @@ public class CharacterInteraction : MonoBehaviour
             Debug.DrawRay(origin, direction, Color.blue, 5.0f);
         }
 
-        if (Physics.Raycast(origin, direction, out myHit))
+        if (Physics.Raycast(origin, direction, out myHit, range, interactiveObjectLayer))
         {
             return myHit.collider.gameObject;
         }

@@ -33,8 +33,6 @@ public class GlowObject : MonoBehaviour
 
 	public void TriggerGlow()
 	{
-        Debug.Log("enter");
-
         _targetColor = GlowColor;
 		enabled = true;
 	}

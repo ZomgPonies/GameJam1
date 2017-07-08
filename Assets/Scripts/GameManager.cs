@@ -6,7 +6,7 @@ public class GameManager: MonoBehaviour
     public const float GRAVITY = 5.0f;
 
     public const string PLAYER_TAG = "Player";
-
+    
     private void Start()
     {
         // Activate FPS camera

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(CharacterInteraction))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,10 +39,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-            {
-                m_interactionScript.Interact();
-            }
+            // Interect with the environment and maybe try to select a gameobject
+            m_interactionScript.Interact((bool)inputs["interactInput"]);
         }
     }
 
@@ -75,6 +74,8 @@ public class PlayerController : MonoBehaviour
         {
             inputs.Add("yAxis", Input.GetAxis("Mouse Y"));
         }
+
+        inputs.Add("interactInput", Input.GetButtonDown("Interact"));
         
         return inputs;
     }
