@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GlowObject : MonoBehaviour
 {
-	public Color GlowColor;
+	public Color GlowColor = new Color(0F, 1F, 1F, 1F);
 	public float LerpFactor = 10;
 
 	public Renderer[] Renderers
