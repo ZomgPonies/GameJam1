@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
             
             // Move the character
             movementScript.MoveCharacter(inputs, true);
-
+            
             // Move the camera
             if (CameraManager.Instance.CurrentCameraType != "")
             {

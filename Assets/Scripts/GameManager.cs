@@ -56,6 +56,8 @@ public class GameManager: MonoBehaviour
 
     public void StartGame()
     {
+        Screen.lockCursor = true;
+
         GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         player.GetComponent<PlayerController>().enabled = true;
 
