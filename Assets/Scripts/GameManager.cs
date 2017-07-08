@@ -8,5 +8,8 @@ public class GameManager: MonoBehaviour
     private void Start()
     {
         CameraManager.Instance.ChangeCamera(CameraManager.FPS_CAMERA);
+
+        ScenarioManager.GetInstance().LoadScenarios();
+        InteractiveObjectModelManager.GetInstance().LoadInteractiveObjectModels();
     }
 }
