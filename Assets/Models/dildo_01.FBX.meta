@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 8d248ded158ea1747a0ed9bc5028535c
+<<<<<<< HEAD
 timeCreated: 1499540998
+=======
+timeCreated: 1499541105
+>>>>>>> refs/remotes/origin/master
 licenseType: Free
 ModelImporter:
   serializedVersion: 19

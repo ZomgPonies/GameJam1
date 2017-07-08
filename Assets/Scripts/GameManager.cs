@@ -6,7 +6,7 @@ public class GameManager: MonoBehaviour
     public const float GRAVITY = 5.0f;
 
     public const string PLAYER_TAG = "Player";
-
+    
     private void Start()
     {
         // Activate FPS camera
@@ -59,6 +59,8 @@ public class GameManager: MonoBehaviour
 
     public void StartGame()
     {
+        Screen.lockCursor = true;
+
         GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         player.GetComponent<PlayerController>().enabled = true;
 
