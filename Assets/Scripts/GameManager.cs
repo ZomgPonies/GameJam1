@@ -11,7 +11,7 @@ public class GameManager: MonoBehaviour
     {
         // Activate FPS camera
         CameraManager.Instance.ChangeCamera(CameraManager.FPS_CAMERA);
-
+        
         GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         player.GetComponent<PlayerController>().enabled = false;
 
