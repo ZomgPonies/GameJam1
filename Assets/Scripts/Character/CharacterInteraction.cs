@@ -18,14 +18,14 @@ public class CharacterInteraction : MonoBehaviour
         GameObject myObj = getObject(camera.transform.position, camera.transform.forward);
 
         if (currentInteractedObjectGameObject != null && currentInteractedObjectGameObject != myObj) currentInteractedObjectGameObject.GetComponent<GlowObject>().StopGlow();
-
+        
         if (myObj != null)
         {
-            currentInteractedObjectGameObject = myObj;
-            currentInteractedObjectGameObject.GetComponent<GlowObject>().TriggerGlow();
-
+            if (currentInteractedObjectGameObject != myObj) myObj.GetComponent<GlowObject>().TriggerGlow();
             if (selected) MissionManager.Instance.m_mission.OnPickupObject(myObj.GetComponent<InteractiveObject>());
         }
+
+        currentInteractedObjectGameObject = myObj;
     }
 
     /*InteractiveObject getInteractiveObject(Vector3 origin, Vector3 direction)
