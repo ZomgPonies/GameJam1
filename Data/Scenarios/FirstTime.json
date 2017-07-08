@@ -1,0 +1,7 @@
+{
+	"id": 0,
+	"name": "My first time",
+	"soundFileName": "the_track_name.mp4",
+	"associatedRoomId": 0,
+	"objects": [0, 1, 2, 3]
+}
