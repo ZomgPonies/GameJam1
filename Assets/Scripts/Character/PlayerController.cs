@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private CharacterMovement movementScript;
+    private CharacterInteraction m_interactionScript;
     
     private void Awake()
     {
         movementScript = GetComponent<CharacterMovement>();
+        m_interactionScript = GetComponent<CharacterInteraction>();
     }
 
     private void Update()
@@ -34,6 +36,11 @@ public class PlayerController : MonoBehaviour
                         CameraManager.Instance.CurrentCamera.GetComponent<FPSCameraControl>().RotateCameraWithInput(inputs, true);
                         break;
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                m_interactionScript.Interact();
             }
         }
     }
