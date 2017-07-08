@@ -3,5 +3,5 @@
 	"name": "My first time",
 	"soundFileName": "the_track_name.mp4",
 	"associatedRoomId": 0,
-	"objects": [1]
+	"objects": [0, 1]
 }
