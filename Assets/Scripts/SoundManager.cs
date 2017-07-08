@@ -20,4 +20,9 @@ public class SoundManager : MonoSingleton<SoundManager>
 
         return null;
     }
+
+    public AudioSource GetAudioSource()
+    {
+        return CameraManager.Instance.CurrentCamera.GetComponent<AudioSource>();
+    }
 }
