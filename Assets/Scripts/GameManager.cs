@@ -5,10 +5,15 @@ public class GameManager: MonoBehaviour
     // Gravitie's strength
     public const float GRAVITY = 5.0f;
 
+    public const string PLAYER_TAG = "Player";
+
     private void Start()
     {
         // Activate FPS camera
         CameraManager.Instance.ChangeCamera(CameraManager.FPS_CAMERA);
+
+        GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        player.GetComponent<PlayerController>().enabled = false;
 
         // Display loading title
         HUDManager.Instance.ChangeDisplayedHUD(HUDManager.Instance.loadingCanvas);
@@ -51,6 +56,9 @@ public class GameManager: MonoBehaviour
 
     public void StartGame()
     {
+        GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        player.GetComponent<PlayerController>().enabled = true;
+
         Debug.Log("Start a game");
     }
 }
