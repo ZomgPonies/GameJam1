@@ -5,14 +5,12 @@ using UnityEngine;
 public class ObjectInteractive : MonoBehaviour
 {
 
-    public ObjectIdentificator m_ObjectIdentificator;
-
     private int m_ID;
 
     // Use this for initialization
     void Start()
     {
-        m_ID = m_ObjectIdentificator.getNextObjectID();
+        m_ID = ObjectIdentificator.GetInstance().getNextObjectID();
         Debug.Log(name + " is with ID : " + m_ID);
     }
 
@@ -23,11 +21,11 @@ public class ObjectInteractive : MonoBehaviour
 
     public void OnFailPickup()
     {
-
+        Debug.Log("MMmhh. The " + name + " object is not the right item to pick up.");
     }
 
     public void OnPickupGood()
     {
-
+        Debug.Log("Good job, you succesly pick up the " + name + " object.");
     }
 }

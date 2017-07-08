@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectIdentificator : MonoBehaviour
+public class ObjectIdentificator : Singleton<ObjectIdentificator>
 {
 
-    static int m_ObjectID;
+    static private int m_ObjectID;
 
     // Use this for initialization
     void Start()
