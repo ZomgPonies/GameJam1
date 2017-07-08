@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public class InteractiveObjectModelManager : JSONFileParser<InteractiveObjectModelManager>
+public class InteractiveObjectModelLoader : JSONFileParser<InteractiveObjectModelLoader>
 {
     public InteractiveObjectModel[] interactiveObjectModels { get; private set; }
 
