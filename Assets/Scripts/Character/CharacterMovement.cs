@@ -12,24 +12,24 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     [SerializeField]
-    private Vector3 maxVelocity = new Vector3(0.96f, 0, 0.96f);
+    private Vector3 maxVelocity = new Vector3(2.5f, 0, 2.5f);
 
     [SerializeField]
     private float rotationSpeed = 120.0f;
 
     // Modifiers are a percentage of how much of the movement must be executed, NOT how much isn't executed
     [SerializeField]
-    private float sideStepModifier = 1.08f;
+    private float sideStepModifier = 0.8f;
 
     // Modifiers are a percentage of how much of the movement must be executed, NOT how much isn't executed
     [SerializeField]
     private float backwardModifier = 0.9f;
 
     [SerializeField]
-    private float acceleration = 13.0f;
+    private float acceleration = 10.0f;
 
     [SerializeField]
-    private float decceleration = 11.0f;
+    private float decceleration = 8.0f;
 
     private void Awake()
     {
