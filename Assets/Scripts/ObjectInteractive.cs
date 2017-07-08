@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class ObjectInteractive : MonoBehaviour
 {
-
-    private int m_ID;
+    private InteractiveObjectModel m_model;
 
     // Use this for initialization
     void Start()
     {
-        m_ID = ObjectIdentificator.GetInstance().getNextObjectID();
-        Debug.Log(name + " is with ID : " + m_ID);
     }
 
     public int getID()
     {
-        return m_ID;
+        return m_model.id;
     }
 
-    public void setID(int ID)
+    public void setModel(InteractiveObjectModel model)
     {
-        m_ID = ID;
+        m_model = model;
     }
 
     public void OnFailPickup()
