@@ -20,9 +20,6 @@ public class GameManager: MonoBehaviour
 
         LoadData();
 
-        // Init the first mission with the right scenario
-        MissionManager.Instance.InitMission();
-
         // Fade out the loading HUD after all the loading and launch the game after the fade out
         HUDManager.Instance.FadeOutHud(HUDManager.Instance.loadingCanvas, StartGame);
     }
@@ -63,6 +60,9 @@ public class GameManager: MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         player.GetComponent<PlayerController>().enabled = true;
+        
+        // Init the first mission with the right scenario
+        MissionManager.Instance.InitMission();
 
         Debug.Log("Start a game");
     }

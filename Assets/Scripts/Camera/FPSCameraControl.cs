@@ -41,34 +41,16 @@ public class FPSCameraControl : MonoBehaviour
 
     private Vector3 zeroDegreeForward;
 
-    private float turnSpeed;
-    private float fromAngle;
-    private float toAngle;
-    private float lockOnSpeed;
+    private float turnSpeed = 135.0f;
+    private float fromAngle = 50f;
+    private float toAngle = 310f;
+    private float lockOnSpeed = 100.0f;
 
-    private int angleCorrection;
+    private int angleCorrection = 2;
     
     // Accessor of the frozen rotation state
     public bool FrozenRotation { get; private set; }
-
-    private void Awake()
-    {
-        InitializeVariables();
-    }
-
-    private void InitializeVariables()
-    {
-        if (transform.parent == null) zeroDegreeForward = Vector3.forward;
-
-        turnSpeed = 135.0f;
-        fromAngle = 50f;
-        toAngle = 310f;
-        lockOnSpeed = 100.0f;
-
-        angleCorrection = 2;
-        FrozenRotation = false;
-    }
-
+    
     private void Start()
     {
         // If the camera has a parent, the "0 degree forward" must stored again in case that the parent rotated
