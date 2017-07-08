@@ -11,5 +11,15 @@ public class InteractiveObjectModelManager : JSONFileParser<InteractiveObjectMod
     {
         interactiveObjectModels = ConvertJSONtoClass<InteractiveObjectModel>(Application.dataPath + "/" + INTERACTIF_OBJECT_MODELS_FILES_PATH + "/");
     }
+
+    public InteractiveObjectModel GetById(int id)
+    {
+        foreach (InteractiveObjectModel interactiveObjectModel in interactiveObjectModels)
+        {
+            if (interactiveObjectModel.id == id) return interactiveObjectModel;
+        }
+
+        return null;
+    }
 }
 
