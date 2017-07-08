@@ -37,9 +37,7 @@ public class CharacterInteraction : MonoBehaviour
             return;
         }
 
-        Debug.Log("We got an interactive object (" + myObj.m_model.name + ")");
-
-        // TODO - Savoir si cet objet est bien celui de la mission
+        MissionManager.Instance.m_mission.OnPickupObject(myObj);
     }
 
     InteractiveObject getInteractiveObject(Vector3 origin, Vector3 direction)
