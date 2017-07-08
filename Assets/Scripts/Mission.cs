@@ -5,14 +5,14 @@ using UnityEngine;
 public class Mission : MonoBehaviour
 {
 
-    public List<ObjectInteractive> m_objectListToPickup;
+    public List<InteractiveObject> m_objectListToPickup;
     
-    private List<ObjectInteractive> m_pickedUpObject;
+    private List<InteractiveObject> m_pickedUpObject;
 
     // Use this for initialization
     void Start()
     {
-        m_pickedUpObject = new List<ObjectInteractive>(m_objectListToPickup.Count);
+        m_pickedUpObject = new List<InteractiveObject>(m_objectListToPickup.Count);
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Mission : MonoBehaviour
     {
     }
 
-    public void OnPickupObject(ObjectInteractive obj)
+    public void OnPickupObject(InteractiveObject obj)
     {
         if (IsObjectInMission(obj))
         {
@@ -39,8 +39,8 @@ public class Mission : MonoBehaviour
         }
     }
 
-    bool IsObjectInMission(ObjectInteractive obj)
+    bool IsObjectInMission(InteractiveObject obj)
     {
-        return m_objectListToPickup.Exists((ObjectInteractive intObj) => intObj.getID() == obj.getID());
+        return m_objectListToPickup.Exists((InteractiveObject intObj) => intObj.getID() == obj.getID());
     }
 }
