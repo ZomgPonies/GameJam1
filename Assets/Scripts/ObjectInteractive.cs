@@ -19,6 +19,11 @@ public class ObjectInteractive : MonoBehaviour
         return m_ID;
     }
 
+    public void setID(int ID)
+    {
+        m_ID = ID;
+    }
+
     public void OnFailPickup()
     {
         Debug.Log("MMmhh. The " + name + " object is not the right item to pick up.");
