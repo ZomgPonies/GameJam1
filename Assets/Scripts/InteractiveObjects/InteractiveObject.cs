@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class InteractiveObject : MonoBehaviour
 {
-    private InteractiveObjectModel m_model;
+    public InteractiveObjectModel m_model { get; private set; }
 
     // Use this for initialization
     void Start()
     {
     }
 
-    public int getID()
+    public int GetID()
     {
         return m_model.id;
     }
 
-    public void setModel(InteractiveObjectModel model)
+    public void SetModel(InteractiveObjectModel model)
     {
         m_model = model;
     }

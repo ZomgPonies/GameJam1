@@ -41,6 +41,6 @@ public class Mission : MonoBehaviour
 
     bool IsObjectInMission(InteractiveObject obj)
     {
-        return m_objectListToPickup.Exists((InteractiveObject intObj) => intObj.getID() == obj.getID());
+        return m_objectListToPickup.Exists((InteractiveObject intObj) => intObj.GetID() == obj.GetID());
     }
 }
