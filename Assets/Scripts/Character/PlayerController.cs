@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterMovement movementScript;
     private CharacterInteraction m_interactionScript;
-    
+
+    [SerializeField]
+    private Canvas pauseMenu;
+
     private void Awake()
     {
         movementScript = GetComponent<CharacterMovement>();
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
             // Interect with the environment and maybe try to select a gameobject
             m_interactionScript.Interact((bool)inputs["interactInput"]);
+
+            if ((bool)inputs["pauseInput"]) Pause();
         }
     }
 
@@ -76,8 +81,22 @@ public class PlayerController : MonoBehaviour
         }
 
         inputs.Add("interactInput", Input.GetButtonDown("Interact"));
+        inputs.Add("pauseInput", Input.GetButtonDown("Pause"));
         
         return inputs;
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0;
+
+        Canvas pauseMenuCanvas = Instantiate(pauseMenu);
+        pauseMenuCanvas.GetComponent<PauseManager>().SetCallBackMethodOnClose(EndPause);
+    }
+
+    private void EndPause()
+    {
+        Time.timeScale = 1;
     }
 
     static void ClearConsole()
