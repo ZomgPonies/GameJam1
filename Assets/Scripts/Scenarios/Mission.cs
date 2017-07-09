@@ -35,7 +35,16 @@ public class Mission : MonoBehaviour
 
             if (m_pickedUpObject.Count >= m_pickedUpObject.Capacity)
             {
-                Debug.Log("Good Job, you win the rite");
+                GameObject room = GameObject.Find("Room_" + m_scenario.associatedRoomId);
+                if(room)
+                {
+                    Door door = room.GetComponentInChildren<Door>();
+                    if (door)
+                    {
+                        door.OpenDoor();
+                        MissionManager.Instance.UpdateNextMission(m_scenario.nextMission);
+                    }
+                }
             }
         }
         else
