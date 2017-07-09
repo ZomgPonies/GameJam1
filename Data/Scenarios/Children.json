@@ -1,0 +1,8 @@
+{
+	"id": 3,
+	"name": "Children",
+	"soundFileName": "the_track_name.mp4",
+	"associatedRoomId": 3,
+	"nextMission": 666,
+	"objects": [1, 2, 5]
+}

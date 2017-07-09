@@ -13,7 +13,6 @@ public class MissionManager : MonoSingleton<MissionManager>
     
     public void InitMission()
     {
-        Debug.Log(m_mission);
         m_mission.ChooseScenario(m_currentRoom);
     }
 
