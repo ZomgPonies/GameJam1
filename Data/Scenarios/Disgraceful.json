@@ -1,0 +1,8 @@
+{
+	"id": 2,
+	"name": "Disgraceful",
+	"soundFileName": "the_track_name.mp4",
+	"associatedRoomId": 2,
+	"nextMission": 3,
+	"objects": [1, 2, 5]
+}
