@@ -1,5 +1,4 @@
-﻿using NUnit.Framework.Constraints;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,7 +14,7 @@ public class IntroManager : MonoBehaviour
     private string creditSceneName;
 
     [SerializeField]
-    private string helpSceneName;
+    private Canvas helpCanvas;
 
     private void Start()
     {
@@ -34,6 +33,7 @@ public class IntroManager : MonoBehaviour
 
     public void LoadHelp()
     {
-        SceneManager.LoadScene(helpSceneName);
+        Canvas helpCanvasGameObject = Instantiate(helpCanvas);
+        helpCanvasGameObject.GetComponent<HelpManager>().SetCallBackMethodOnClose(initiallySelectedButton.Select);
     }
 }
