@@ -33,6 +33,7 @@ public class CloseDoorTrigger : MonoBehaviour
             {
                 MissionManager.Instance.UpdateNextMission();
                 player.GetComponent<PlayerController>().enabled = true;
+                gameObject.SetActive(false);
             });
     }
 }
