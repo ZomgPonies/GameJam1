@@ -11,7 +11,7 @@ public class IntroManager : MonoBehaviour
     private string gameSceneName;
 
     [SerializeField]
-    private string creditSceneName;
+    private Canvas creditCanvas;
 
     [SerializeField]
     private Canvas helpCanvas;
@@ -26,14 +26,15 @@ public class IntroManager : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
 
-    public void LoadCredit()
+    public void LoadCredit(Button clickedButton)
     {
-        SceneManager.LoadScene(creditSceneName);
+        Canvas creditCanvas = Instantiate(this.creditCanvas);
+        creditCanvas.GetComponent<CreditManager>().SetCallBackMethodOnClose(clickedButton.Select);
     }
 
-    public void LoadHelp()
+    public void LoadHelp(Button clickedButton)
     {
-        Canvas helpCanvasGameObject = Instantiate(helpCanvas);
-        helpCanvasGameObject.GetComponent<HelpManager>().SetCallBackMethodOnClose(initiallySelectedButton.Select);
+        Canvas helpCanvas = Instantiate(this.helpCanvas);
+        helpCanvas.GetComponent<HelpManager>().SetCallBackMethodOnClose(clickedButton.Select);
     }
 }

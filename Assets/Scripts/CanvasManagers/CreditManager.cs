@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CreditManager : MonoBehaviour
@@ -7,16 +7,21 @@ public class CreditManager : MonoBehaviour
     [SerializeField]
     private Button initiallySelectedButton;
 
-    [SerializeField]
-    private string introSceneName;
+    private Action callBackMethod;
 
     private void Start()
     {
         initiallySelectedButton.Select();
     }
 
-    public void LoadIntro()
+    public void SetCallBackMethodOnClose(Action method)
     {
-        SceneManager.LoadScene(introSceneName);
+        callBackMethod = method;
+    }
+
+    public void CloseCredit()
+    {
+        Destroy(gameObject);
+        if (callBackMethod != null) callBackMethod();
     }
 }
