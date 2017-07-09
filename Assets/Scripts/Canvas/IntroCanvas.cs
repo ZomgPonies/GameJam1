@@ -41,4 +41,9 @@ public class IntroCanvas : MonoBehaviour
         helpCanvas.GetComponent<HelpCanvas>().SetCallBackMethodOnClose(clickedButton.Select);
         helpCanvas.GetComponent<HelpCanvas>().SetDisabledCanvas(gameObject);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
