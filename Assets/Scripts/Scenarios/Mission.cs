@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour
 {
-    public List<Canvas> m_outroCanvas = new List<Canvas>();
+    public Canvas m_endingScreen;
     public List<AudioClip> m_initSound = new List<AudioClip>();
 
     private Scenario m_scenario;    
@@ -26,7 +26,12 @@ public class Mission : MonoBehaviour
 
         if(roomScenarios.Length <= 0)
         {
-            // TODO - End of the game
+            Canvas ending = Instantiate(m_endingScreen);
+            ending.GetComponent<ScenarioCanvas>().SetCallBackMethodOnClose(
+            () =>
+            {
+                Application.LoadLevel("intro");
+            });
             return;
         }
 
@@ -53,6 +58,10 @@ public class Mission : MonoBehaviour
                     if (door)
                     {
                         door.OpenDoor();
+                    }
+                    else
+                    {
+                        MissionManager.Instance.UpdateNextMission();
                     }
                 }
             }
