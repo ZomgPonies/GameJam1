@@ -35,6 +35,6 @@ public class InteractiveObject : MonoBehaviour
     public void OnPickupGood()
     {
         if (validSound != null) SoundManager.Instance.GetAudioSource().PlayOneShot(validSound);
-        Debug.Log("Good job, you succesly pick up the " + name + " object.");
+        Debug.Log("Good job, you successly pick up the " + name + " object.");
     }
 }
