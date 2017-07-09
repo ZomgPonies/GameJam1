@@ -2,14 +2,14 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CreditManager : MonoBehaviour
+public class HelpManager : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;
 
     [SerializeField]
     private string introSceneName;
-
+    
     private void Start()
     {
         initiallySelectedButton.Select();
