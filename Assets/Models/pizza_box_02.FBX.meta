@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: eb77962fc897199448e8c42ffdcec8b0
-timeCreated: 1499523321
+guid: bcd27a710b504ae4b8b59af93b13b321
+timeCreated: 1499567018
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box009
+    4300000: Box029
     9500000: //RootNode
   materials:
     importMaterials: 1
