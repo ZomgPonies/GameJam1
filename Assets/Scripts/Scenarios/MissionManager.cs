@@ -14,6 +14,7 @@ public class MissionManager : MonoSingleton<MissionManager>
     public void InitMission()
     {
         m_mission.ChooseScenario(m_currentRoom);
+        SoundManager.Instance.GetAudioSource().PlayOneShot(m_mission.GetIntroVoiceLine());
     }
 
     public void UpdateNextMission(int newRoomID)

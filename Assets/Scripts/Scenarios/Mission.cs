@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mission : MonoBehaviour
 {
     public List<Canvas> m_outroCanvas = new List<Canvas>();
+    public List<AudioClip> m_initSound = new List<AudioClip>();
 
     private Scenario m_scenario;    
     private List<InteractiveObject> m_pickedUpObject;
@@ -79,5 +80,10 @@ public class Mission : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public AudioClip GetIntroVoiceLine()
+    {
+        return m_initSound.Find((AudioClip audio) => audio.name == m_scenario.soundFileName);
     }
 }
