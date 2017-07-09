@@ -21,9 +21,4 @@ public class MissionManager : MonoSingleton<MissionManager>
         m_currentRoom = newRoomID;
         InitMission();
     }
-
-    public void GoToNextMission()
-    {
-
-    }
 }
