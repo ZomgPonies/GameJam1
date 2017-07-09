@@ -4,5 +4,5 @@
 	"soundFileName": "voix_INTRO",
 	"associatedRoomId": 0,
 	"nextMission": 1,
-	"objects": [3, 4]
+	"objects": [3, 4, 5]
 }

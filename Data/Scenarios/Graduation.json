@@ -1,8 +1,0 @@
-{
-	"id": 1,
-	"name": "My graduation",
-	"soundFileName": "the_track_name.mp4",
-	"associatedRoomId": 3,
-	"nextMission": 2,
-	"objects": [1, 2, 5]
-}
