@@ -28,6 +28,7 @@ public class InteractiveObject : MonoBehaviour
     {
         if (invalidSound != null)
         {
+            SoundManager.Instance.GetAudioSource().Stop();
             SoundManager.Instance.GetAudioSource().PlayOneShot(invalidSound);
         }
         GetComponent<GlowObject>().FailPickup();
@@ -37,6 +38,7 @@ public class InteractiveObject : MonoBehaviour
     {
         if (validSound != null)
         {
+            SoundManager.Instance.GetAudioSource().Stop();
             SoundManager.Instance.GetAudioSource().PlayOneShot(validSound);
         }
         Debug.Log("Good job, you successly pick up the " + name + " object.");

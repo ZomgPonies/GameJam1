@@ -7,6 +7,8 @@ public class Door : MonoBehaviour
     public const string OPEN_PARAM_NAME_STRING = "Open";
     public const string CLOSE_PARAM_NAME_STRING = "Close";
 
+    public AudioClip m_openSound;
+
     private Animator animator;
 
     private int openParamHashId;
@@ -32,6 +34,11 @@ public class Door : MonoBehaviour
     public void CloseDoor()
     {
         animator.SetTrigger(closeParamHashId);
+    }
+
+    public void PlaySoundOpen()
+    {
+        SoundManager.Instance.GetAudioSource().PlayOneShot(m_openSound);
     }
 
     public void SetOpenState()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour
 {
+    public List<Canvas> m_outroCanvas = new List<Canvas>();
+
     private Scenario m_scenario;    
     private List<InteractiveObject> m_pickedUpObject;
 
@@ -20,7 +22,15 @@ public class Mission : MonoBehaviour
     public void ChooseScenario(int roomID)
     {
         Scenario[] roomScenarios = ScenarioLoader.GetInstance().GetByRoomId(roomID);
+
+        if(roomScenarios.Length <= 0)
+        {
+            // TODO - End of the game
+            return;
+        }
+
         m_scenario = roomScenarios[Random.Range(0, roomScenarios.Length - 1)];
+
         m_pickedUpObject = new List<InteractiveObject>(m_scenario.objects.Length);
 
         Debug.Log("You choose the " + m_scenario.name + " scenario");
@@ -42,7 +52,13 @@ public class Mission : MonoBehaviour
                     if (door)
                     {
                         door.OpenDoor();
-                        MissionManager.Instance.UpdateNextMission(m_scenario.nextMission);
+                        //Canvas outroCanvas = Instantiate(m_outroCanvas[m_scenario.associatedRoomId]);
+
+                        //outroCanvas.GetComponent<ScenarioCanvas>().SetCallBackMethodOnClose(
+                        //    () =>
+                        //    {
+                        //        MissionManager.Instance.UpdateNextMission(m_scenario.nextMission);
+                        //    });
                     }
                 }
             }
