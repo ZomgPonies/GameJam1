@@ -56,6 +56,8 @@ public class GameManager: MonoBehaviour
 
     public void StartGame()
     {
+        HUDManager.Instance.FadeInHud(HUDManager.Instance.HUDInventory);
+
         Screen.lockCursor = true;
 
         GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);

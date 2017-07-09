@@ -5,6 +5,7 @@ public class HUDManager : MonoSingleton<HUDManager>
 {
     // Available HUDs
     public CanvasGroup loadingCanvas;
+    public CanvasGroup HUDInventory;
 
     public CanvasGroup CurrentHudCanvasGroup { get; private set; }
 
