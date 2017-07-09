@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class GameManager: MonoBehaviour
 {
@@ -32,24 +33,27 @@ public class GameManager: MonoBehaviour
         // Give each interactive object the correct model
         foreach (InteractiveObjectModel interactiveObjectModel in InteractiveObjectModelLoader.GetInstance().interactiveObjectModels)
         {
-            GameObject interactiveObject = GameObject.Find(interactiveObjectModel.gameObjectName);
+            var objects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == interactiveObjectModel.gameObjectName);
 
-            if (interactiveObject != null)
+            foreach(var obj in objects)
             {
-                InteractiveObject interactiveObjectScript = interactiveObject.GetComponent<InteractiveObject>();
-
-                if (interactiveObjectScript != null)
+                if (obj != null)
                 {
-                    interactiveObjectScript.SetModel(interactiveObjectModel);
+                    InteractiveObject interactiveObjectScript = obj.GetComponent<InteractiveObject>();
+
+                    if (interactiveObjectScript != null)
+                    {
+                        interactiveObjectScript.SetModel(interactiveObjectModel);
+                    }
+                    else
+                    {
+                        Debug.LogError(interactiveObjectModel.gameObjectName + " GameObject doesn't have an InteractiveObject script");
+                    }
                 }
                 else
                 {
-                    Debug.LogError(interactiveObjectModel.gameObjectName + " GameObject doesn't have an InteractiveObject script");
+                    Debug.LogError(interactiveObjectModel.gameObjectName + " GameObject wasn't found");
                 }
-            }
-            else
-            {
-                Debug.LogError(interactiveObjectModel.gameObjectName + " GameObject wasn't found");
             }
         }
     }

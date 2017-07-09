@@ -1,8 +1,8 @@
 {
 	"id": 0,
 	"name": "My first time",
-	"soundFileName": "voix_INTRO_1",
+	"soundFileName": "voix_INTRO",
 	"associatedRoomId": 0,
 	"nextMission": 1,
-	"objects": [3, 5]
+	"objects": [3, 4]
 }
