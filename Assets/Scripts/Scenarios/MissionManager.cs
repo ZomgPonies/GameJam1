@@ -14,12 +14,12 @@ public class MissionManager : MonoSingleton<MissionManager>
     public void InitMission()
     {
         m_mission.ChooseScenario(m_currentRoom);
-        SoundManager.Instance.GetAudioSource().PlayOneShot(m_mission.GetIntroVoiceLine());
+        SoundManager.Instance.PlaySound(m_mission.GetIntroVoiceLine());
     }
 
-    public void UpdateNextMission(int newRoomID)
+    public void UpdateNextMission()
     {
-        m_currentRoom = newRoomID;
+        m_currentRoom = m_mission.GetNextMission();
         InitMission();
     }
 }

@@ -25,4 +25,10 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         return CameraManager.Instance.CurrentCamera.GetComponent<AudioSource>();
     }
+
+    public void PlaySound(AudioClip sound)
+    {
+        GetAudioSource().Stop();
+        GetAudioSource().PlayOneShot(sound);
+    }
 }

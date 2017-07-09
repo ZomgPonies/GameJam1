@@ -53,13 +53,6 @@ public class Mission : MonoBehaviour
                     if (door)
                     {
                         door.OpenDoor();
-                        //Canvas outroCanvas = Instantiate(m_outroCanvas[m_scenario.associatedRoomId]);
-
-                        //outroCanvas.GetComponent<ScenarioCanvas>().SetCallBackMethodOnClose(
-                        //    () =>
-                        //    {
-                        //        MissionManager.Instance.UpdateNextMission(m_scenario.nextMission);
-                        //    });
                     }
                 }
             }
@@ -72,6 +65,11 @@ public class Mission : MonoBehaviour
 
     bool IsObjectInMission(InteractiveObject obj)
     {
+        if(AlreadyPickup(obj))
+        {
+            return false;
+        }
+
         foreach(int id in m_scenario.objects)
         {
             if(id == obj.GetID())
@@ -82,8 +80,17 @@ public class Mission : MonoBehaviour
         return false;
     }
 
+    bool AlreadyPickup(InteractiveObject obj)
+    {
+        return m_pickedUpObject.Find((InteractiveObject o) => o.name == obj.name);
+    }
+
     public AudioClip GetIntroVoiceLine()
     {
         return m_initSound.Find((AudioClip audio) => audio.name == m_scenario.soundFileName);
+    }
+    public int GetNextMission()
+    {
+        return m_scenario.nextMission;
     }
 }
