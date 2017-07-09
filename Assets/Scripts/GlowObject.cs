@@ -5,6 +5,7 @@ public class GlowObject : MonoBehaviour
 {
 	public Color GlowColor = new Color(0F, 1F, 1F, 1F);
 	public float LerpFactor = 10;
+    public Color FailColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
 
 	public Renderer[] Renderers
 	{
@@ -42,6 +43,16 @@ public class GlowObject : MonoBehaviour
 		_targetColor = Color.black;
 		enabled = true;
 	}
+
+    public void FailPickup()
+    {
+        _currentColor = FailColor;
+        for (int i = 0; i < _materials.Count; i++)
+        {
+            _materials[i].SetColor("_GlowColor", FailColor);
+        }
+        _targetColor = GlowColor;
+    }
 
 	/// <summary>
 	/// Loop over all cached materials and update their color, disable self if we reach our target color.
