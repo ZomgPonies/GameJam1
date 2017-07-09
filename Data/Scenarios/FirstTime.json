@@ -3,5 +3,6 @@
 	"name": "My first time",
 	"soundFileName": "track_01",
 	"associatedRoomId": 0,
-	"objects": [0, 1]
+	"nextMission": 1,
+	"objects": [3, 5]
 }
