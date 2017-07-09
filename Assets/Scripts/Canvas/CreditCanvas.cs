@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditManager : MonoBehaviour
+public class CreditCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;

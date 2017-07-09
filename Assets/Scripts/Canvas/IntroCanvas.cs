@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class IntroManager : MonoBehaviour
+public class IntroCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;
@@ -19,6 +19,8 @@ public class IntroManager : MonoBehaviour
     private void Start()
     {
         initiallySelectedButton.Select();
+
+        Screen.lockCursor = false;
     }
 
     public void LoadGame()
@@ -29,14 +31,14 @@ public class IntroManager : MonoBehaviour
     public void LoadCredit(Button clickedButton)
     {
         Canvas creditCanvas = Instantiate(this.creditCanvas);
-        creditCanvas.GetComponent<CreditManager>().SetCallBackMethodOnClose(clickedButton.Select);
-        creditCanvas.GetComponent<CreditManager>().SetDisabledCanvas(gameObject);
+        creditCanvas.GetComponent<CreditCanvas>().SetCallBackMethodOnClose(clickedButton.Select);
+        creditCanvas.GetComponent<CreditCanvas>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadHelp(Button clickedButton)
     {
         Canvas helpCanvas = Instantiate(this.helpCanvas);
-        helpCanvas.GetComponent<HelpManager>().SetCallBackMethodOnClose(clickedButton.Select);
-        helpCanvas.GetComponent<HelpManager>().SetDisabledCanvas(gameObject);
+        helpCanvas.GetComponent<HelpCanvas>().SetCallBackMethodOnClose(clickedButton.Select);
+        helpCanvas.GetComponent<HelpCanvas>().SetDisabledCanvas(gameObject);
     }
 }

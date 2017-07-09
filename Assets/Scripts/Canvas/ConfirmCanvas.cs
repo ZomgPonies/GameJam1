@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConfirmManager : MonoBehaviour
+public class ConfirmCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;

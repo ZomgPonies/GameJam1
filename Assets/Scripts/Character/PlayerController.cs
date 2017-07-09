@@ -90,12 +90,16 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0;
 
+        Screen.lockCursor = false;
+
         Canvas pauseMenuCanvas = Instantiate(pauseMenu);
-        pauseMenuCanvas.GetComponent<PauseManager>().SetCallBackMethodOnClose(EndPause);
+        pauseMenuCanvas.GetComponent<PauseCanvas>().SetCallBackMethodOnClose(EndPause);
     }
 
     private void EndPause()
     {
+        Screen.lockCursor = true;
+
         Time.timeScale = 1;
     }
 

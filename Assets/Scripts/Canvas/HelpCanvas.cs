@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HelpManager : MonoBehaviour
+public class HelpCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;

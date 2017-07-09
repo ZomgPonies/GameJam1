@@ -1,10 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour
+public class PauseCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button initiallySelectedButton;
@@ -40,16 +39,16 @@ public class PauseManager : MonoBehaviour
     {
         Canvas confirmCanvasGameObject = Instantiate(confirmCanvas);
 
-        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetAcceptMethod(Application.Quit);
-        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetRefuseMethod(clickedButton.Select);
-        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetDisabledCanvas(gameObject);
+        confirmCanvasGameObject.GetComponent<ConfirmCanvas>().SetAcceptMethod(Application.Quit);
+        confirmCanvasGameObject.GetComponent<ConfirmCanvas>().SetRefuseMethod(clickedButton.Select);
+        confirmCanvasGameObject.GetComponent<ConfirmCanvas>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadHelp(Button clickedButton)
     {
         Canvas helpCanvasGameObject = Instantiate(helpCanvas);
-        helpCanvasGameObject.GetComponent<HelpManager>().SetCallBackMethodOnClose(clickedButton.Select);
-        helpCanvasGameObject.GetComponent<HelpManager>().SetDisabledCanvas(gameObject);
+        helpCanvasGameObject.GetComponent<HelpCanvas>().SetCallBackMethodOnClose(clickedButton.Select);
+        helpCanvasGameObject.GetComponent<HelpCanvas>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadIntro()
