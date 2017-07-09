@@ -30,11 +30,13 @@ public class IntroManager : MonoBehaviour
     {
         Canvas creditCanvas = Instantiate(this.creditCanvas);
         creditCanvas.GetComponent<CreditManager>().SetCallBackMethodOnClose(clickedButton.Select);
+        creditCanvas.GetComponent<CreditManager>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadHelp(Button clickedButton)
     {
         Canvas helpCanvas = Instantiate(this.helpCanvas);
         helpCanvas.GetComponent<HelpManager>().SetCallBackMethodOnClose(clickedButton.Select);
+        helpCanvas.GetComponent<HelpManager>().SetDisabledCanvas(gameObject);
     }
 }

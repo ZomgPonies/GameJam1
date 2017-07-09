@@ -8,6 +8,7 @@ public class HelpManager : MonoBehaviour
     private Button initiallySelectedButton;
 
     private Action callBackMethod;
+    private GameObject disabledCanvas;
 
     private void Start()
     {
@@ -19,9 +20,16 @@ public class HelpManager : MonoBehaviour
         callBackMethod = method;
     }
 
+    public void SetDisabledCanvas(GameObject disabledCanvas)
+    {
+        this.disabledCanvas = disabledCanvas;
+        this.disabledCanvas.SetActive(false);
+    }
+
     public void CloseHelp()
     {
         Destroy(gameObject);
+        disabledCanvas.SetActive(true);
         if (callBackMethod != null) callBackMethod();
     }
 }

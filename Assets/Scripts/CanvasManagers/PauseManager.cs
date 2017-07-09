@@ -12,6 +12,9 @@ public class PauseManager : MonoBehaviour
     private Action callBackMethod;
 
     [SerializeField]
+    private Canvas confirmCanvas;
+
+    [SerializeField]
     private Canvas helpCanvas;
 
     [SerializeField]
@@ -33,15 +36,20 @@ public class PauseManager : MonoBehaviour
         if (callBackMethod != null) callBackMethod();
     }
 
-    public void QuitGame()
+    public void QuitGame(Button clickedButton)
     {
-        Application.Quit();
+        Canvas confirmCanvasGameObject = Instantiate(confirmCanvas);
+
+        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetAcceptMethod(Application.Quit);
+        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetRefuseMethod(clickedButton.Select);
+        confirmCanvasGameObject.GetComponent<ConfirmManager>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadHelp(Button clickedButton)
     {
         Canvas helpCanvasGameObject = Instantiate(helpCanvas);
         helpCanvasGameObject.GetComponent<HelpManager>().SetCallBackMethodOnClose(clickedButton.Select);
+        helpCanvasGameObject.GetComponent<HelpManager>().SetDisabledCanvas(gameObject);
     }
 
     public void LoadIntro()
