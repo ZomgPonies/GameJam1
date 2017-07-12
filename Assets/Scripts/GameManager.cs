@@ -1,8 +1,11 @@
-﻿using UnityEngine;
-using System.Linq;
+﻿using System.Linq;
+using UnityEngine;
 
 public class GameManager: MonoBehaviour
 {
+    private int nbDataToLaod;
+    private int nbDataLoaded;
+
     // Gravitie's strength
     public const float GRAVITY = 5.0f;
 
@@ -20,22 +23,40 @@ public class GameManager: MonoBehaviour
         HUDManager.Instance.ChangeDisplayedHUD(HUDManager.Instance.loadingCanvas);
 
         LoadData();
-
-        // Fade out the loading HUD after all the loading and launch the game after the fade out
-        HUDManager.Instance.FadeOutHud(HUDManager.Instance.loadingCanvas, StartGame);
     }
 
     private void LoadData()
     {
-        ScenarioLoader.GetInstance().LoadScenarios();
-        InteractiveObjectModelLoader.GetInstance().LoadInteractiveObjectModels();
+        nbDataToLaod = 2;
+        nbDataLoaded = 0;
 
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            ScenarioLoader.Instance.LoadScenarios(OnLoadingDataProgress);
+            InteractiveObjectModelLoader.Instance.LoadInteractiveObjectModels(OnLoadingDataProgress);
+        }
+        else if(Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            ScenarioLoader.Instance.LoadScenariosForWebGLPlayer(OnLoadingDataProgress);
+            InteractiveObjectModelLoader.Instance.LoadInteractiveObjectModelsForWebGLPlayer(OnLoadingDataProgress);
+        }
+    }
+
+    private void OnLoadingDataProgress()
+    {
+        nbDataLoaded++;
+
+        if(nbDataLoaded == nbDataToLaod) OnFinishLoadingData();
+    }
+
+    private void OnFinishLoadingData()
+    {
         // Give each interactive object the correct model
-        foreach (InteractiveObjectModel interactiveObjectModel in InteractiveObjectModelLoader.GetInstance().interactiveObjectModels)
+        foreach (InteractiveObjectModel interactiveObjectModel in InteractiveObjectModelLoader.Instance.interactiveObjectModels)
         {
             var objects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == interactiveObjectModel.gameObjectName);
 
-            foreach(var obj in objects)
+            foreach (var obj in objects)
             {
                 if (obj != null)
                 {
@@ -56,6 +77,9 @@ public class GameManager: MonoBehaviour
                 }
             }
         }
+
+        // Fade out the loading HUD after all the loading and launch the game after the fade out
+        HUDManager.Instance.FadeOutHud(HUDManager.Instance.loadingCanvas, StartGame);
     }
 
     public void StartGame()

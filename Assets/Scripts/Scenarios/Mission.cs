@@ -22,7 +22,7 @@ public class Mission : MonoBehaviour
 
     public void ChooseScenario(int roomID)
     {
-        Scenario[] roomScenarios = ScenarioLoader.GetInstance().GetByRoomId(roomID);
+        Scenario[] roomScenarios = ScenarioLoader.Instance.GetByRoomId(roomID);
 
         if(roomScenarios.Length <= 0)
         {

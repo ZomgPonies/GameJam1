@@ -1,0 +1,8 @@
+{
+	"id": 2,
+	"name": "Disgraceful",
+	"soundFileName": "voixsalon_intro",
+	"associatedRoomId": 1,
+	"nextMission": 2,
+	"objects": [23,24,25,26,28,31,33]
+}

@@ -1,15 +1,31 @@
-﻿using System.IO;
+﻿using System;
 using UnityEngine;
 
-public class InteractiveObjectModelLoader : JSONFileParser<InteractiveObjectModelLoader>
+public class InteractiveObjectModelLoader : JSONFileParser<InteractiveObjectModelLoader, InteractiveObjectModel>
 {
+    private Action CallBackOnConvertionFinished;
+
     public InteractiveObjectModel[] interactiveObjectModels { get; private set; }
+    
+    public const string INTERACTIF_OBJECT_MODELS_FOLDER_PATH = "InteractiveObjectModels";
+    public const string INTERACTIF_OBJECT_MODELS_LIST_FILE = "InteractiveObjectModelList.text";
 
-    public const string INTERACTIF_OBJECT_MODELS_FILES_PATH = "../Data/InteractiveObjectModels";
-
-    public void LoadInteractiveObjectModels()
+    public void LoadInteractiveObjectModels(Action callBackOnConvertionFinished)
     {
-        interactiveObjectModels = ConvertJSONtoClass<InteractiveObjectModel>(Application.dataPath + "/" + INTERACTIF_OBJECT_MODELS_FILES_PATH + "/");
+        interactiveObjectModels = ConvertJSONtoClass(Application.streamingAssetsPath + "/" + INTERACTIF_OBJECT_MODELS_FOLDER_PATH + "/");
+        callBackOnConvertionFinished();
+    }
+
+    public void LoadInteractiveObjectModelsForWebGLPlayer(Action callBackOnConvertionFinished)
+    {
+        CallBackOnConvertionFinished = callBackOnConvertionFinished;
+        StartCoroutine(ConvertJSONtoClassForWebGL(Application.streamingAssetsPath + "/" + INTERACTIF_OBJECT_MODELS_FOLDER_PATH, INTERACTIF_OBJECT_MODELS_LIST_FILE, OnLoadJSONForWebGLSuccess));
+    }
+
+    private void OnLoadJSONForWebGLSuccess(InteractiveObjectModel[] interactiveObjectModels)
+    {
+        this.interactiveObjectModels = interactiveObjectModels;
+        CallBackOnConvertionFinished();
     }
 
     public InteractiveObjectModel GetById(int id)
