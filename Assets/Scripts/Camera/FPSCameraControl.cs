@@ -42,7 +42,7 @@ public class FPSCameraControl : MonoBehaviour
     private Vector3 zeroDegreeForward;
 
     private float turnSpeed = 135.0f;
-    private float fromAngle = 50f;
+    private float fromAngle = 70f;
     private float toAngle = 310f;
     private float lockOnSpeed = 100.0f;
 
